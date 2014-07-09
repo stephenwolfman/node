@@ -1,0 +1,28 @@
+{
+  "name": "node-eg",
+  "version": "0.0.1",
+  "description": "example app",
+  "main": "eg.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stephenwolfman/node.git"
+  },
+  "keywords": [
+    "example",
+    "node",
+    "heroku"
+  ],
+  "author": "Stephen Wolfman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephenwolfman/node/issues"
+  },
+  "homepage": "https://github.com/stephenwolfman/node",
+  "dependencies": {
+    "express": "^4.5.1",
+    "logfmt": "^1.1.2"
+  }
+}
