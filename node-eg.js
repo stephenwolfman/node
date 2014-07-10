@@ -24,16 +24,16 @@ var allMapImages = [{"MapImageId":2,"Lat":40.357298,"Long":-74.667223,"Desc":"Ac
 
 app.get('/', function(req, res) {
 
-var dbTest = db.MapImages;
+/*var dbTest = db.MapImages;
 	var docs = dbTest.find({"SentBy":"Wolfman"});
 	var result = '';
 
 	docs.toArray(function(error, nbDocs) {
 
 	    res.send(nbDocs);
-	});
+	});*/
 
-	//res.send('123:' + result);
+	res.send('Test node app');
 
   
 });
