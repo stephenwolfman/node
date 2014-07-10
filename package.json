@@ -23,6 +23,7 @@
   "homepage": "https://github.com/stephenwolfman/node",
   "dependencies": {
     "express": "^4.5.1",
-    "logfmt": "^1.1.2"
+    "logfmt": "^1.1.2",
+    "mongodb": "^1.4.7"
   }
 }
