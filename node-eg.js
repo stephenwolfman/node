@@ -54,23 +54,34 @@ app.get('/SentBy/:tagId', function(req, res) {
 
 app.get('/DBTest', function(req, res) {
   //res.send("tagId is set to " + req.param("tagId"));
-  var dbTest = db.MapImages;
-	var docs = dbTest.find({"SentBy": req.param("tagId")});
-	var result = '';
 
-	res.send(dbTest.find());
+	res.send(db.collection('MapImages'));
+});
 
+app.get('/DBTest2', function(req, res) {
+  //res.send("tagId is set to " + req.param("tagId"));
+
+	res.send(db.MapImages);
 });
 
 //Service to get all MapImages data
 app.get('/All', function(req, res) {
   //res.send("tagId is set to " + req.param("tagId"));
-  var dbTest = db.MapImages;
-	var docs = dbTest.find();
-	var result = '';
+  	/*var allMapImagesArray = db.MapImages.find().toArray();
+  	
 	docs.toArray(function(error, nbDocs) {
 	    res.send(nbDocs);
 	});
+	*/
+    db.collection('MapImages')
+        .find()
+        .toArray(function(error,docs){
+            if(error){
+                console.log(error);
+                return process.exit(1);
+            }
+            res.send(docs);
+        }); 
 
 });
 
