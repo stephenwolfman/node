@@ -6,7 +6,7 @@ var app = express();
 //var databaseUrl = "mongodb://heroku_app27229592:SilverRoverV8@ds027489.mongolab.com:27489/heroku_app27229592"; // "username:password@example.com/mydb"
 var databaseUrl = "mongodb://wolfman:SilverRoverV8@ds027489.mongolab.com:27489/heroku_app27229592"; // "username:password@example.com/mydb"
 var collections = ["MapImages"]
-var db = require("mongojs").connect(databaseUrl, collections);
+//var db = require("mongojs").connect(databaseUrl, collections);
 
 //console.log(db);
 
@@ -60,8 +60,16 @@ app.get('/DBTest', function(req, res) {
 
 app.get('/DBTest2', function(req, res) {
   //res.send("tagId is set to " + req.param("tagId"));
-
-	res.send(db.MapImages);
+	var mapImagesDocs;
+	
+	require("mongojs").connect(url, function(err, db) {
+	  assert.equal(null, err);
+	  findMapImages(db, function() {
+	  	mapImagesDocs = db.find();		
+	      db.close();
+	  });
+	});
+	res.send(mapImagesDocs.toArray());
 });
 
 //Service to get all MapImages data
@@ -107,6 +115,17 @@ app.get('/Upload', function(req, res) {
 	res.send('Not currently supported');
 });
 
+var findMapImages = function(db, callback) {
+   var cursor = db.collection('MapImages').find( );
+   cursor.each(function(err, doc) {
+      assert.equal(err, null);
+      if (doc != null) {
+         console.dir(doc);
+      } else {
+         callback();
+      }
+   });
+};
 
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
