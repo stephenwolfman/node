@@ -6,7 +6,7 @@ var app = express();
 //var databaseUrl = "mongodb://heroku_app27229592:SilverRoverV8@ds027489.mongolab.com:27489/heroku_app27229592"; // "username:password@example.com/mydb"
 var databaseUrl = "mongodb://wolfman:SilverRoverV8@ds027489.mongolab.com:27489/heroku_app27229592"; // "username:password@example.com/mydb"
 var collections = ["MapImages"]
-//var db = require("mongojs").connect(databaseUrl, collections);
+var db = require("mongojs").connect(databaseUrl, collections);
 
 //console.log(db);
 
