@@ -58,7 +58,7 @@ app.get('/DBTest', function(req, res) {
 	var docs = dbTest.find({"SentBy": req.param("tagId")});
 	var result = '';
 
-	res.send(docs);
+	res.send(dbTest.find());
 
 });
 
