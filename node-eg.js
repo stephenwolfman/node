@@ -52,7 +52,15 @@ app.get('/SentBy/:tagId', function(req, res) {
 
 });
 
+app.get('/DBTest', function(req, res) {
+  //res.send("tagId is set to " + req.param("tagId"));
+  var dbTest = db.MapImages;
+	var docs = dbTest.find({"SentBy": req.param("tagId")});
+	var result = '';
 
+	res.send(docs);
+
+});
 
 //Service to get all MapImages data
 app.get('/All', function(req, res) {
