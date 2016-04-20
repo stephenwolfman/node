@@ -55,7 +55,7 @@ app.get('/SentBy/:tagId', function(req, res) {
 app.get('/DBTest', function(req, res) {
   //res.send("tagId is set to " + req.param("tagId"));
 
-	res.send(db.collection('MapImages'));
+	res.send(db.collection('MapImages').find());
 });
 
 app.get('/DBTest2', function(req, res) {
