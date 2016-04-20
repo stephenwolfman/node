@@ -62,14 +62,11 @@ app.get('/DBTest2', function(req, res) {
   //res.send("tagId is set to " + req.param("tagId"));
 	var mapImagesDocs;
 	
-	require("mongojs").connect(url, function(err, db) {
-	  assert.equal(null, err);
 	  findMapImages(db, function() {
-	  	mapImagesDocs = db.find();		
-	      db.close();
+	  	mapImagesDocs = db.find();
+		res.send(mapImagesDocs.toArray());		
+	      	db.close();
 	  });
-	});
-	res.send(mapImagesDocs.toArray());
 });
 
 //Service to get all MapImages data
