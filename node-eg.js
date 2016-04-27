@@ -88,16 +88,16 @@ app.get('/All', function(req, res) {
 
 //Service to get all MapImages data
 app.get('/All2', function(req, res) {
-  //res.send("tagId is set to " + req.param("tagId"));
-  	/*var allMapImagesArray = db.MapImages.find().toArray();
-  	
-	docs.toArray(function(error, nbDocs) {
-	    res.send(nbDocs);
-	});
-	*/
-     var mapImagesDb = db.MapImages.find().toArray();
-     res.send(mapImagesDb);
+    db.collection('MapImages', function(err, collection) {
+        collection.find().toArray(function(err, items) {
+            res.send(items);
+        });
+    });
 });
+
+
+
+
 
 app.get('/Upload', function(req, res) {
   //res.send("tagId is set to " + req.param("tagId"));
